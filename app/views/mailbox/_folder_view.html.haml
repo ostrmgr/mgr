@@ -1,0 +1,12 @@
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-body
+        = render 'mailbox/folders'
+  .col-md-8
+    .panel.panel-default
+      .panel-body
+        - if is_conversation
+          = render 'conversations/form'
+        - else
+          = render partial: 'conversations/conversation', collection: messages

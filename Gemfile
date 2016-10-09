@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'pry-rails'
 gem 'devise'
+gem 'mailboxer'
 
 group :test do
   gem 'factory_girl_rails'

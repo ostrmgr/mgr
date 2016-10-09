@@ -15,8 +15,17 @@ module ApplicationHelper
     end
     nil
   end
-  
+
+  def unread_messages_count
+    mailbox.inbox(:unread => true).count(:id, :distinct => true)
+  end
+
+  def active_page(active_page)
+    @active == active_page ? "active" : ""
+  end
+
   def admin?
     current_user && current_user.admin?
   end
+  
 end
