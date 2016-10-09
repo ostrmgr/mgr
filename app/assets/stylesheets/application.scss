@@ -17,3 +17,12 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table > thead > tr > th {
+  vertical-align: middle;
+  text-align: center;  
+}

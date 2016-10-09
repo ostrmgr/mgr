@@ -1,11 +1,22 @@
-%h1 Listing polls
-
-%ul
-  - @polls.each do |poll|
-    %li
-      =link_to poll.title, poll
-      |
-      = link_to 'Edit', edit_poll_path(poll)
-      = link_to 'Destroy', poll, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%p= link_to 'New Poll', new_poll_path, class: "btn btn-primary" 
+%table.table.table-hover
+  %thead
+    %tr
+      %th.col-md-7 Poll title
+      %th.col-md-1 Number of questions      
+      %th.col-md-1 Number of replies
+      %th.col-md-3 Option
+  %tbody
+    - @polls.each do |poll|
+      %tr
+        %td.col-md-7
+          =link_to poll.title, poll
+        %td.col-md-1.text-center
+          =Question.where(poll_id: poll.id).count
+        %td.col-md-1.text-center
+          =Reply.where(poll_id: poll.id).count
+        %td.col-md-3.text-center
+          =link_to 'Edit', edit_poll_path(poll), class: "btn btn-warning" if admin?
+          =link_to 'Destroy', poll, :method => :delete, class: "btn btn-danger", :data => { :confirm => 'Are you sure?' } if admin?
+          =link_to 'Answer', new_poll_reply_path(poll), class: "btn btn-default" if current_user
+        
+%p= link_to 'New Poll', new_poll_path, class: "btn btn-primary" if admin?

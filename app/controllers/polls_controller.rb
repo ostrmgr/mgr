@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin!, except: [:index]
   # GET /polls
   # GET /polls.json
   def index
@@ -28,7 +28,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
+        format.html { redirect_to @poll, flash: { success: 'Poll was successfully created.' } }
         format.json { render :show, status: :created, location: @poll }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class PollsController < ApplicationController
   def destroy
     @poll.destroy
     respond_to do |format|
-      format.html { redirect_to polls_url, notice: 'Poll was successfully destroyed.' }
+      format.html { redirect_to polls_url, flash: { error: 'Poll was successfully destroyed.' }  }
       format.json { head :no_content }
     end
   end
@@ -71,4 +71,5 @@ class PollsController < ApplicationController
     def poll_params
       params.require(:poll).permit(:title)
     end
+    
 end
