@@ -36,12 +36,18 @@
       %ul.nav.navbar-nav.navbar-right
         -if current_user
           %li 
-            %li
-              =link_to mailbox_inbox_path do
-                %span.glyphicon.glyphicon-inbox 
-                Inbox
-                %span.label.label-danger
+            -if unread_messages_count > 0
+              %li.bg-danger
+                =link_to mailbox_inbox_path do
+                  %span.glyphicon.glyphicon-inbox 
+                  = "You have"
                   = unread_messages_count
+                  = "unread messages in Inbox"
+            -else
+              %li
+                =link_to mailbox_inbox_path do
+                  %span.glyphicon.glyphicon-inbox 
+                  Inbox
             %span.navbar-text Signed in as #{current_user.email}
             %li
               =link_to destroy_session_path('user'), method: :delete do

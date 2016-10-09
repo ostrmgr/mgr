@@ -5,7 +5,7 @@
       %span Compose
   %li{:class => active_page(:inbox)}
     = link_to mailbox_inbox_path do
-      %span.label.label-danger.pull-right= unread_messages_count
+      %span.badge.badge-danger.pull-right= unread_messages_count
       %em.fa.fa-inbox.fa-lg
       %span Inbox
   %li{:class => active_page(:sent)}

@@ -4,7 +4,7 @@
     .media-left
       / user avators can go here
       %a{:href => "#"}
-        %img.media-object{:alt => "...", :src => "http://placehold.it/64x64"}/
+        %img.media-object{:src => "https://api.adorable.io/avatars/64/#{message.sender.id}"}/
     .media-body
       %h4.media-heading
         = message.sender.email
