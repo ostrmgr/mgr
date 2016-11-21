@@ -9,7 +9,9 @@
 
   .field
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, class: "form-control", placeholder: "Enter title here"
+  %br
+    = f.file_field :title, multiple: true
   %p
     = f.label :kind
   .radio

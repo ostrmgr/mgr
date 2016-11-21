@@ -6,8 +6,9 @@
         - @poll.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  %p
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, class: "form-control", placeholder: "Enter title here"
   .actions
-    = f.submit 'Save'
+    %p
+      = f.submit 'Save', class: "btn btn-primary"

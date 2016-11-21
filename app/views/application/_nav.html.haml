@@ -33,6 +33,10 @@
               %li.divider{:role => "separator"}
               %li
                 %a{:href => "#"} One more separated link
+      %form.navbar-form.navbar-left
+        .form-group
+          %input.form-control{:placeholder => "Search", :type => "text"}/
+        %button.btn.btn-default{:type => "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
         -if current_user
           %li 
